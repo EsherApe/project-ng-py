@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bulma/css/bulma.css';
+
+html, body, app-root, app-main-page {
+  display: block;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}

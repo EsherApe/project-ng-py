@@ -1,0 +1,108 @@
+<!-- register.component.html -->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4-desktop is-6-tablet">
+        <div class="box">
+          <h1 class="title has-text-centered">Create Account</h1>
+
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <!-- Error message -->
+            <div *ngIf="error" class="notification is-danger">
+              {{ error }}
+            </div>
+
+            <!-- Username -->
+            <div class="field">
+              <label class="label" for="username">Username</label>
+              <div class="control">
+                <input
+                  type="text"
+                  id="username"
+                  formControlName="username"
+                  class="input"
+                  [ngClass]="{ 'is-danger': submitted && f['username'].errors }"
+                >
+              </div>
+              <p *ngIf="submitted && f['username'].errors" class="help is-danger">
+                <span *ngIf="f['username'].errors['required']">Username is required</span>
+                <span *ngIf="f['username'].errors['minlength']">Username must be at least 3 characters</span>
+              </p>
+            </div>
+
+            <!-- Email -->
+            <div class="field">
+              <label class="label" for="email">Email</label>
+              <div class="control">
+                <input
+                  type="email"
+                  id="email"
+                  formControlName="email"
+                  class="input"
+                  [ngClass]="{ 'is-danger': submitted && f['email'].errors }"
+                >
+              </div>
+              <p *ngIf="submitted && f['email'].errors" class="help is-danger">
+                <span *ngIf="f['email'].errors['required']">Email is required</span>
+                <span *ngIf="f['email'].errors['email']">Please enter a valid email address</span>
+              </p>
+            </div>
+
+            <!-- Password -->
+            <div class="field">
+              <label class="label" for="password">Password</label>
+              <div class="control">
+                <input
+                  type="password"
+                  id="password"
+                  formControlName="password"
+                  class="input"
+                  [ngClass]="{ 'is-danger': submitted && f['password'].errors }"
+                >
+              </div>
+              <p *ngIf="submitted && f['password'].errors" class="help is-danger">
+                <span *ngIf="f['password'].errors['required']">Password is required</span>
+                <span *ngIf="f['password'].errors['minlength']">Password must be at least 8 characters</span>
+              </p>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="field">
+              <label class="label" for="confirmPassword">Confirm Password</label>
+              <div class="control">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  formControlName="confirmPassword"
+                  class="input"
+                  [ngClass]="{ 'is-danger': submitted && f['confirmPassword'].errors }"
+                >
+              </div>
+              <p *ngIf="submitted && f['confirmPassword'].errors" class="help is-danger">
+                <span *ngIf="f['confirmPassword'].errors['required']">Please confirm your password</span>
+                <span *ngIf="f['confirmPassword'].errors['passwordMismatch']">Passwords do not match</span>
+              </p>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-primary is-fullwidth" [disabled]="loading">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                  Register
+                </button>
+              </div>
+            </div>
+
+            <!-- Links -->
+            <div class="mt-4 has-text-centered">
+              <p>
+                Already have an account? <a routerLink="/login">Login</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
