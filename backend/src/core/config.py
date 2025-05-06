@@ -1,1 +1,0 @@
-APP_NAME = "My FastAPI App"

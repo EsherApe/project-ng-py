@@ -29,7 +29,7 @@ export class LoginComponent {
 
   userForm = this.fb.group({
     username: ['', [Validators.required]],
-    password: ['', [Validators.required, Validators.minLength(8)]]
+    password: ['', [Validators.required, Validators.minLength(5)]]
   });
 
   constructor() {
